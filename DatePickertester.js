@@ -9,10 +9,21 @@ const currentYear = new Date().getFullYear();
 const fromMonth = new Date(currentYear, 0, 1, 0, 0);
 const toMonth = new Date(currentYear + 10, 11, 31, 23, 59);
 const overlayStyle = {
-  position: 'absolute',
+  position: 'relative',
   background: 'white',
-  boxShadow: '0 2px 5px rgba(0, 0, 0, .15)'
+  display:'inline-block',
+  boxShadow: '0 2px 5px rgba(0, 0, 0, .15)',
+  marginLeft: '180px',
 };
+const datePickerStyle ={
+    marginLeft: '25%',
+    marginBottom: '10%',
+    display: 'inline'
+
+};
+const mainContainer = {
+  margin: '10px'
+}
 
 export default class YearMonthDateNavigation extends React.Component {
   constructor(props, context) {
@@ -79,9 +90,10 @@ handleInputBlur () {
   }
 
   handleDayClick(day) {
+    debugger;
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
-    if(this.state.from && this.state.to){
+    if(range.from && range.to){
         this.setState({ showDatePicker: false });
     }
     
@@ -98,7 +110,7 @@ handleInputBlur () {
     const selectedDay = from ? moment(from).format('L') + '-' + moment(to).format('L') : ""; //moment(this.state.value, 'L', true).toDate();
     
     return (
-      <span onMouseDown={this.handleContainerMouseDown}>
+      <span onMouseDown={this.handleContainerMouseDown} style={mainContainer}>
         <span>
           <input
             type="text"
@@ -110,12 +122,13 @@ handleInputBlur () {
             onBlur={this.handleInputBlur}
           />
         </span>
-        <span>
+        <span >
          {this.state.showDatePicker &&
-          <div style={{ position: 'relative' }}>
+          <span style={{ position: 'relative',marginRight: '40%'}}>
             <div style={overlayStyle}>
         <DayPicker
           month={this.state.month}
+          style={datePickerStyle}
           fromMonth={fromMonth}
           toMonth={toMonth}
           dateFormat="dd-mm-yyyy"
@@ -127,7 +140,7 @@ handleInputBlur () {
           }
     />
     </div>
-          </div>}
+          </span>}
           
         </span>
       </span>

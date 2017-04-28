@@ -2,6 +2,7 @@ import React from 'react';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import moment from 'moment';
 import 'react-day-picker/lib/style.css';
+import './DatePicker.css'
 //import  DateUtils  from 'react-day-picker';
 
 
@@ -24,7 +25,7 @@ const YearMonthForm = ({ date, localeUtils, onChange }) => {
   };
 
   return (
-    <span className="DayPicker-Caption">
+    <div className="DayPicker-Caption">
       <select name="month" onChange={handleChange} value={date.getMonth()}>
         {months.map((month, i) => <option key={month} value={i}>{month}</option>)}
       </select>
@@ -35,7 +36,7 @@ const YearMonthForm = ({ date, localeUtils, onChange }) => {
           </option>
         ))}
       </select>
-    </span>
+    </div>
   );
 };
 

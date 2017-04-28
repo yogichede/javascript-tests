@@ -21,6 +21,7 @@ class DateRangePickerComponent extends React.Component {
     this.openDatePicker = this.openDatePicker.bind(this)
   }
   openDatePicker() {
+    debugger;
       this.setState({showDatePicker: !this.state.showDatePicker});
   }
 
