@@ -1,0 +1,22 @@
+.datepicker-icon, .ok-icon{
+	margin-left: 5px;
+}
+.datePickerHolder
+{
+	position: absolute;
+    background: #eee;
+    z-index: 1;
+    margin-top: -325px;
+}
+.datePickerValuesHolder{
+	position: relative;
+}
+.ok-icon{
+	position: absolute;
+    z-index: 2;
+    margin-top: -25px;
+    margin-left: 230px;
+}
+.endDateField{
+	margin-left: 2px;
+}
